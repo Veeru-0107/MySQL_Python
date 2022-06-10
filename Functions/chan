@@ -1,0 +1,21 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="root")
+
+mycu = mydb.cursor()
+
+
+mycu.execute("SHOW TABLES")
+
+Add_format = "insert into Circles (Name, City) values (%s, %s)"
+Data = ("Ballari, Sudha Cross")
+
+mycu.execute(Add_format, Data)
+mycu.commit()
+
+print(mycu.rowcount,"record inserted.")
+
+
